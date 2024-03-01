@@ -155,7 +155,6 @@ int exec_with_path(char *command, char **args)
 		else
 		{
 			found = 0;
-			/*_found(NULL, command, args, found);*/
 		}
 		free(file_path);
 		token = _strtok(NULL, ":");

@@ -47,8 +47,6 @@ int execute_command(char **args)
 		}
 	}
 
-	free(args);
-
 	return (0); /* no a built_in command*/
 }
 
@@ -64,7 +62,7 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
 {
 	ssize_t nread;
 	size_t len = 0;
-	char *lineptr = NULL, **args;
+	char *lineptr = NULL, **args = NULL;
 	/*int i;*/
 
 	if (isatty(STDIN_FILENO) == 1)
@@ -90,6 +88,7 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
 			{
 				exec_with_path(args[0], args);
 			}
+			free(args);
 		}
 		free(lineptr);
 	}
@@ -105,12 +104,10 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
 			args = _token_lineptr(lineptr);
 
 			_execvecmd(args);
+			free(args);
 		}
 
 		free(lineptr);
 	}
-
-	free(args);
-
 	return (0);
 }
