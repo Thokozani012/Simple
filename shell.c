@@ -47,6 +47,8 @@ int execute_command(char **args)
 		}
 	}
 
+	free(args);
+
 	return (0); /* no a built_in command*/
 }
 
@@ -81,7 +83,7 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
 				continue;
 			if (nread > 0 && lineptr[nread - 1] == '\n')
 				lineptr[nread - 1] = '\0';
-			/*args = _token_lineptr(lineptr);*/
+
 			args = token_lineptr(lineptr);
 
 			if (!execute_command(args))
@@ -107,6 +109,8 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
 
 		free(lineptr);
 	}
+
+	free(args);
 
 	return (0);
 }
