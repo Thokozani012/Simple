@@ -1,2 +1,1 @@
-This is a new README file for the simple shell project
-okay repo names changed, let's see if it will work
+This is README for the shell program i am using a prepatory practice for my upcoming simple_shell project
